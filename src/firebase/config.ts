@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore';
 
 
 // Firebase configuration
-// Use window.firebaseConfig if available (in production), otherwise fallback to environment variables (for local dev)
+// this is for local development, you can replace these values with your own Firebase project settings
 const firebaseConfig = typeof window !== 'undefined' && (window as any).firebaseConfig
   ? (window as any).firebaseConfig
   : {
