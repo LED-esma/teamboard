@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { firebaseAuth } from '../services/firebase';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase/config';
 
 // User interface
 interface User {
