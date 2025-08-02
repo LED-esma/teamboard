@@ -2,7 +2,7 @@
   "name": "teamboard",
   "version": "1.0.0",
   "description": "Collaborative Planning Tool - Web-Based MVP with Firebase Integration",
-  "homepage": ".",
+  "homepage": "https://led-esma.github.io/teamboard",
   "private": true,
   "dependencies": {
     "@types/node": "^18.0.0",
