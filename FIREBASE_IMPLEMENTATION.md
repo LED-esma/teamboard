@@ -9,17 +9,17 @@
 
 ### Step 1: Set Up Environment Variables
 
-1. Update your `.env` file with your Firebase configuration:
+1. Go to:
+GitHub Repo > Settings > Secrets and variables > Actions
+Add the following secrets (based on your Firebase config):
 
-```bash
-# Firebase Configuration
-FIREBASE_API_KEY=your-actual-api-key
-FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
-FIREBASE_PROJECT_ID=your-project-id
-FIREBASE_STORAGE_BUCKET=your-project.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=123456789
-FIREBASE_APP_ID=your-app-id
-```
+Secret Name	Value from Firebase console
+FIREBASE_API_KEY	AIza...
+FIREBASE_AUTH_DOMAIN	your-app.firebaseapp.com
+FIREBASE_PROJECT_ID	your-project-id
+FIREBASE_STORAGE_BUCKET	your-app.appspot.com
+FIREBASE_MESSAGING_SENDER_ID	1234567890
+FIREBASE_APP_ID	1:2345:web:abc...
 
 2. Get your Firebase config from Firebase Console:
    - Go to Project Settings → General
