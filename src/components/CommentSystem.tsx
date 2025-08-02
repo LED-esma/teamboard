@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageSquare, User, Clock, Hash, Plus, Search } from 'lucide-react';
+import { MessageSquare, User, Hash, Plus, Search } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { firebaseComments, FirebaseComment } from '../services/firebase';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, MoreVertical, Calendar, User, Tag, MessageSquare } from 'lucide-react';
+import { Plus, MoreVertical, Calendar, User, MessageSquare } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import EmbeddedComments from './EmbeddedComments';
 import { firebaseTasks, FirebaseTask } from '../services/firebase';
