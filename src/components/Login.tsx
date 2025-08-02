@@ -137,19 +137,21 @@ const Login: React.FC = () => {
             </button>
           </div>
 
-          <div className="rounded-md bg-gray-800 border border-gray-700 p-4">
-            <div className="text-sm text-gray-300">
-              <h4 className="font-medium text-gray-200 mb-2">Demo Credentials</h4>
-              <p className="text-xs text-gray-400 mb-3">
-                These users must be created in Firebase Authentication and Firestore database first.
-              </p>
-              <div className="space-y-1 text-xs">
-                <div><strong>Admin:</strong> admin@teamboard.com / admin123</div>
-                <div><strong>Editor:</strong> editor@teamboard.com / editor123</div>
-                <div><strong>Viewer:</strong> viewer@teamboard.com / viewer123</div>
+          {['localhost', '127.0.0.1'].includes(window.location.hostname) && (
+            <div className="rounded-md bg-gray-800 border border-gray-700 p-4">
+              <div className="text-sm text-gray-300">
+                <h4 className="font-medium text-gray-200 mb-2">Demo Credentials</h4>
+                <p className="text-xs text-gray-400 mb-3">
+                  These users must be created in Firebase Authentication and Firestore database first.
+                </p>
+                <div className="space-y-1 text-xs">
+                  <div><strong>Admin:</strong> admin@teamboard.com / admin123</div>
+                  <div><strong>Editor:</strong> editor@teamboard.com / editor123</div>
+                  <div><strong>Viewer:</strong> viewer@teamboard.com / viewer123</div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </form>
       </div>
     </div>
