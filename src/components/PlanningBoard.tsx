@@ -37,21 +37,18 @@ const PlanningBoard: React.FC = () => {
     { id: 'done', title: 'Done', status: 'done', color: 'bg-green-900' }
   ];
 
-  // Load tasks from Firebase
+  // Set up listener for tasks
   useEffect(() => {
-    const loadTasks = async () => {
-      try {
-        setIsLoading(true);
-        const tasksData = await firebaseTasks.getAll();
-        setTasks(tasksData as Task[]);
-      } catch (error) {
-        console.error('Error loading tasks:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    setIsLoading(true);
+    
+    // Subscribe to real-time updates
+    const unsubscribe = firebaseTasks.onSnapshot((tasksData) => {
+      setTasks(tasksData as Task[]);
+      setIsLoading(false);
+    });
 
-    loadTasks();
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   const handleAddTask = async () => {
@@ -69,19 +66,18 @@ const PlanningBoard: React.FC = () => {
         tags: newTask.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
       };
 
-      const taskId = await firebaseTasks.add(taskData);
+      await firebaseTasks.add(taskData);
       
-      if (taskId) {
-        setNewTask({
-          title: '',
-          description: '',
-          priority: 'medium',
-          assignee: '',
-          dueDate: '',
-          tags: ''
-        });
-        setShowAddTask(false);
-      }
+      // Reset form -  listener will update the tasks automatically
+      setNewTask({
+        title: '',
+        description: '',
+        priority: 'medium',
+        assignee: '',
+        dueDate: '',
+        tags: ''
+      });
+      setShowAddTask(false);
     } catch (error) {
       console.error('Error adding task:', error);
     }
@@ -90,7 +86,7 @@ const PlanningBoard: React.FC = () => {
   const handleMoveTask = async (taskId: string, newStatus: Task['status']) => {
     try {
       await firebaseTasks.update(taskId, { status: newStatus });
-      // Task will be updated by the real-time listener
+      //  listener will automatically update the UI
     } catch (error) {
       console.error('Error moving task:', error);
     }
@@ -99,7 +95,7 @@ const PlanningBoard: React.FC = () => {
   const handleDeleteTask = async (taskId: string) => {
     try {
       await firebaseTasks.delete(taskId);
-      // Task will be removed by the real-time listener
+      // Real-time listener will automatically update the UI
     } catch (error) {
       console.error('Error deleting task:', error);
     }
